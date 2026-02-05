@@ -27,6 +27,8 @@ Backend (Node.js / Express Container)
    ↓
 Database (MongoDB Container)
 ```
+![Multi-Tier Docker Architecture](./images/Architecture.PNG)
+
 
 ### 🔐 Security Design
 
@@ -59,18 +61,7 @@ Database (MongoDB Container)
 
 ## 📁 Project Structure
 
-```
-multi-tier-app/
-├── frontend/
-│   ├── Dockerfile
-│   ├── nginx.conf
-│   └── index.html
-├── backend/
-│   ├── Dockerfile
-│   └── index.js
-└── database/
-    └── Dockerfile
-```
+![Multi-Tier Docker Architecture](./images/Directory-structure.png)
 
 ---
 
