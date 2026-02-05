@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Multi Tier App</title>
+</head>
+<body>
+  <h1>Frontend (Nginx)</h1>
+
+  <input id="msg" placeholder="Enter message">
+  <button onclick="save()">Save</button>
+
+  <h3>Saved Messages</h3>
+  <ul id="list"></ul>
+
+  <script>
+    function save() {
+      fetch("/api/save", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          message: document.getElementById("msg").value
+        })
+      }).then(load);
+    }
+
+    function load() {
+      fetch("/api/data")
+        .then(res => res.json())
+        .then(data => {
+          const list = document.getElementById("list");
+          list.innerHTML = "";
+          data.forEach(d => {
+            const li = document.createElement("li");
+            li.innerText = d.message;
+            list.appendChild(li);
+          });
+        });
+    }
+
+    load();
+  </script>
+</body>
+</html>
